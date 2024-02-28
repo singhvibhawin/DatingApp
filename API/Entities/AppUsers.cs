@@ -1,6 +1,7 @@
 using API.Extensions;
 namespace API.Entities;
 public class AppUsers
+
 {
     public int Id { get; set; }
     public string UserName { get; set; }
@@ -18,8 +19,8 @@ public class AppUsers
     public string Country { get; set; }
     public List<Photo> Photos { get; set; } = new();
 
-    public int GetAge()
-    {
-        return DataeOfBirth.CalculateAge();
-    } 
+    // public int GetAge()
+    // {
+    //     return DataeOfBirth.CalculateAge();
+    // } 
 }
