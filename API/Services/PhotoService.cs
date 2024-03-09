@@ -1,4 +1,3 @@
-using API.Entities;
 using API.Helpers;
 using API.Interfaces;
 using CloudinaryDotNet;
@@ -7,9 +6,10 @@ using Microsoft.Extensions.Options;
 
 namespace API.Services
 {
-    public class PhotoService: IPhotoService 
+    public class PhotoService: IPhotoService
     {
         private readonly Cloudinary _cloudinary;
+
         public PhotoService(IOptions<CloudinarySettings> config)
         {
             var acc = new Account
@@ -39,6 +39,11 @@ namespace API.Services
             }
 
             return uploadResult;
+        }
+
+        public Task AddPhotoAsync(string v, object file)
+        {
+            throw new NotImplementedException();
         }
 
         public async Task<DeletionResult> DeletePhotoAsync(string publicId)

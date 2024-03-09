@@ -1,11 +1,11 @@
-﻿using API.DTOs;
+﻿using System.Runtime.CompilerServices;
+using API.DTOs;
 using API.Entities;
 using API.Extensions;
 using API.Helpers;
 using API.Interfaces;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http.Connections;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers;
@@ -61,7 +61,7 @@ public class UserController : BaseApiController
     }
 
     [HttpPost("add-photo")]
-    public async Task<ActionResult<PhotoDto>> AddPhoto(IFormFile)
+    public async Task<ActionResult<PhotoDto>> AddPhoto(IFormFile file)
     {
         var user = await _userRepository.GetUserByUsernameAsync(User.GetUsername());
 
@@ -74,7 +74,7 @@ public class UserController : BaseApiController
         var photo = new Photo
         {
             Url = result.SecureUrl.AbsoluteUri,
-            PublicID = result.PublicID
+            PublicID = result.PublicId
         };
 
         if (user.Photos.Count == 0) photo.IsMain = true;
