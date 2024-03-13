@@ -1,11 +1,9 @@
+using Microsoft.AspNetCore.Identity;
+
 namespace API.Entities
 {
-    public class AppUsers
-    {
-        public int Id { get; set; }
-        public string UserName { get; set; }
-        public byte[] PasswordHash { get; set; }
-        public byte[] PasswordSalt { get; set; }
+    public class AppUsers : IdentityUser<int>
+    {   
         public DateOnly DataeOfBirth { get; set; }
         public string KnownAs { get; set; }
         public DateTime Created { get; set; } = DateTime.UtcNow;
@@ -21,5 +19,6 @@ namespace API.Entities
         public List<UserLike> LikedUser { get; set; } = new();
         public List<Message> MessageSent { get; set; }
         public List<Message> MessageReceived { get; set; }
+        public ICollection<AppUserRole> UserRoles { get; set; }
     }
 }
