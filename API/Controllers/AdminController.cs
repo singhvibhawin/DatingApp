@@ -17,7 +17,7 @@ namespace API.Controllers
 
         [Authorize(Policy = "RequireAdminRole")]
         [HttpGet("users-with-roles")]
-        public async ActionResult GetUsersWithRoles()
+        public async Task<ActionResult> GetUsersWithRoles()
         {
             var users = await _userManager.Users
                 .OrderBy(u => u.UserName)
