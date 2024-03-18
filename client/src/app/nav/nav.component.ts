@@ -20,7 +20,10 @@ export class NavComponent implements OnInit{
 
   login() {
     this.accountService.login(this.model).subscribe({
-      next: _ => this.router.navigateByUrl('/members'),   // instead of using response you can also use () or _ to specify that we're not using an argument for this 
+      next: _ => {
+        this.router.navigateByUrl('/members'),   // instead of using response you can also use () or _ to specify that we're not using an argument for this 
+        this.model = {};
+      }
     })
   }
   logout() {
